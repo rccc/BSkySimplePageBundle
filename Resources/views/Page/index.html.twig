@@ -1,0 +1,31 @@
+{% extends 'BSkyCoreBundle::layout.html.twig' %}
+
+{%- block content -%}
+<section>
+    <div class="well small">
+        <a class="btn small primary" href="{{ path('bsky_simplepage_page_new') }}">{{ 'page.index.add_page'|trans([], 'BSkySimplePageBundle') }}</a>
+    </div>
+    <table class="zebra-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ 'page.index.title'|trans([], 'BSkySimplePageBundle') }}</th>
+                <th>{{ 'global.index_crud.actions'|trans([], 'BSkyCoreBundle') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for page in paginator %}
+            <tr>
+                <td>{{ page.id }}</td>
+                <td><a href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" title="{{ page.title }}">{{ page.title }}</td>
+                <td class="items-actions">
+                    <a class="bui btt-edit" href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" >{{ 'global.form_action.edit'|trans([], 'BSkyCoreBundle') }}</a>
+                    <a class="bui btt-delete bui-confirm-popover-left" data-popover-title="{{ 'global.form_action.are_you_sure'|trans([], 'BSkyCoreBundle') }}" href="{{ path('bsky_simplepage_page_delete', { 'id': page.id }) }}" >{{ 'global.form_action.delete'|trans([], 'BSkyCoreBundle') }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {{ paginator|paginate }}
+</section>
+{%- endblock -%}

@@ -1,0 +1,30 @@
+{% extends 'BSkyCoreBundle::layout.html.twig' %}
+
+{% form_theme form 'BSkyCoreBundle:Form:fields.html.twig' %}
+
+{%- block content -%}
+<section>
+    <div class="page-header">
+        <h2>{{ 'page.edit.title'|trans({'%title%':entity.title}, 'BSkySimplePageBundle') }}</h2>
+    </div>
+    {{ bsky_content_language_selector(languages, lang, 'bsky_simplepage_page_edit', entity.id) }}
+    <form class="form-default" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id, 'lang': lang}) }}" method="POST" {{ form_enctype(form) }} >
+        {{ form_row(form.title) }}
+        <div class="clearfix">
+            <label>{{'page.form.label.slug'|trans([], 'BSkySimplePageBundle') }}</label>
+            <div class="input">
+                <span class="uneditable-input">{{ entity.slug }}</span>
+            </div>
+        </div>
+        {{ form_row(form.body) }}
+        {{ form_row(form.keywords) }}
+        {{ form_row(form.published_at) }}
+        {{ form_rest(form) }}
+        <div class="actions">
+            <input type="submit" class="btn primary" value="{{ 'global.form_action.update'|trans([], 'BSkyCoreBundle') }}" >&nbsp;
+            <a class="btn danger bui-confirm-popover-above" data-popover-title="{{ 'global.form_action.are_you_sure'|trans([], 'BSkyCoreBundle') }}" href="{{ path('bsky_simplepage_page_delete', { 'id': entity.id }) }}" >{{ 'global.form_action.delete'|trans([], 'BSkyCoreBundle') }}</a>&nbsp;
+            <a class="btn" href="{{ path('bsky_simplepage_page_index') }}" >{{ 'global.form_action.back_to_list'|trans([], 'BSkyCoreBundle') }}</a>
+        </div>
+    </form>
+</section>
+{%- endblock -%}

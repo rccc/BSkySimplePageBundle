@@ -1,0 +1,20 @@
+page:
+    flash:
+        success:
+            new: La page "%page_title%" a bien été ajouté
+            edit: La page "%page_title%" a bien été mise à jours
+            delete: La page "%page_title%" a bien été supprimé
+    form:
+        label:
+            title: Titre
+            body: Contenu
+            keywords: Mots-clefs
+            published_at: Publié le
+            slug: Slug
+    index:
+        add_page: Ajouter une page
+        title: Titre
+    edit:
+        title: Edition de la page "%title%"
+    new:
+        title: Ajouter une page

@@ -1,0 +1,19 @@
+bsky_simplepage_page_index:
+     pattern:  /
+     defaults: { _controller:BSkySimplePageBundle:Page:index }
+     
+bsky_simplepage_page_new:
+     pattern:  /new
+     defaults: { _controller:BSkySimplePageBundle:Page:new }
+     
+bsky_simplepage_page_edit:
+     pattern:  /{id}/edit/{lang}
+     defaults: { _controller:BSkySimplePageBundle:Page:edit, lang:fr }
+     requirements:
+      id: \d+
+      
+bsky_simplepage_page_delete:
+     pattern:  /{id}/delete
+     defaults: { _controller:BSkySimplePageBundle:Page:delete }
+     requirements:
+      id: \d+
