@@ -7,23 +7,50 @@ use BSky\Bundle\SimplePageBundle\Entity\Page;
 use BSky\Bundle\SimplePageBundle\Form\Type\PageFormType;
 use BSky\Bundle\SimplePageBundle\Form\Handler\PageFormHandler;
 
+use BSky\Bundle\SimplePageBundle\Form\Model\PageIndexGroup;
+use BSky\Bundle\SimplePageBundle\Form\Type\PageIndexGroupFormType;
+use BSky\Bundle\SimplePageBundle\Form\Handler\PageIndexGroupFormHandler;
+
 class PageController extends Controller
 {
     public function indexAction()
     {
-        $request = $this->getRequest();
         $repository = $this->getDoctrine()->getRepository('BSkySimplePageBundle:Page');
-        $query = $repository->findAllQuery();
         
         $paginator = $this->get('bsky_core.paginator')->paginate(
-            $query,
-            $request->query->get('page', 1),
+            $repository->findAllQuery(),
+            $this->getRequest()->query->get('page', 1),
             (int) $this->get('bsky_parameter.parameter_manager')->getValue('items_per_page'), 
             5
         );
         
+        $form_model = new PageIndexGroup();
+        $form = $this->createForm(new PageIndexGroupFormType($this->get('translator')), $form_model);
+        $formHandler = new PageIndexGroupFormHandler(
+            $this->get('request'),
+            $this->get('doctrine.orm.default_entity_manager')
+        );
+        
+        $process = $formHandler->process($form, $this->getRequest()->get('ids'));
+        if ($process != false) {
+            if ('delete' == $process) {
+                $this->get('session')->setFlash('success', $this->get('translator')->trans(
+                        'page.flash.success.group_delete', 
+                        array(), 
+                        'BSkySimplePageBundle')
+                );
+            } elseif ('publish' == $process) {
+                $this->get('session')->setFlash('success', $this->get('translator')->trans(
+                        'page.flash.success.group_publish', 
+                        array(), 
+                        'BSkySimplePageBundle')
+                );
+            }
+        }
+        
         return $this->render('BSkySimplePageBundle:Page:index.html.twig', array(
-            'paginator' => $paginator
+            'paginator' => $paginator,
+            'groupForm' => $form->createView()
         ));
     }
     

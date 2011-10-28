@@ -19,4 +19,27 @@ class PageRepository extends EntityRepository
         
         return $qb->getQuery();
     }
+    
+    public function deleteGroup($ids) {
+        $qb = $this->createQueryBuilder('c');
+        
+        $qb->delete('BSkySimplePageBundle:Page', 'c')
+         ->where($qb->expr()->in('c.id', $ids))
+         ->getQuery()
+         ->execute();
+         
+        $this->_em->flush();
+    }
+    
+    public function publishGroup($ids) {
+        $qb = $this->createQueryBuilder('c');
+        
+        $qb->update('BSkySimplePageBundle:Page', 'c')
+         ->set('c.published_at', $qb->expr()->literal(date('Y-m-d H:i:s')))
+         ->where($qb->expr()->in('c.id', $ids))
+         ->getQuery()
+         ->execute();
+         
+        $this->_em->flush();
+    }
 }

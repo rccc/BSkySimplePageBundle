@@ -11,9 +11,9 @@
     <form class="form-default" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id, 'lang': lang}) }}" method="POST" {{ form_enctype(form) }} >
         {{ form_row(form.title) }}
         <div class="clearfix">
-            <label>{{'page.form.label.slug'|trans([], 'BSkySimplePageBundle') }}</label>
+            <label>{{'page.form.label.url'|trans([], 'BSkySimplePageBundle') }}</label>
             <div class="input">
-                <span class="uneditable-input">{{ entity.slug }}</span>
+                <span class="inline-text"><a target="_blank" href="{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}">{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}</a></span>
             </div>
         </div>
         {{ form_row(form.body) }}

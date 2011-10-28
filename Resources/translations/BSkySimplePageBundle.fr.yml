@@ -4,6 +4,8 @@ page:
             new: La page "%page_title%" a bien été ajouté
             edit: La page "%page_title%" a bien été mise à jours
             delete: La page "%page_title%" a bien été supprimé
+            group_delete: Les pages ont bien été supprimées
+            group_publish: Les pages ont bien été publiées
     form:
         label:
             title: Titre
@@ -11,9 +13,15 @@ page:
             keywords: Mots-clefs
             published_at: Publié le
             slug: Slug
+            url: URL
     index:
         add_page: Ajouter une page
+        no_result: Aucunes pages n'a été trouvées
+        page_title: Liste des pages
         title: Titre
+        form_group:
+            publish: Publier
+            delete: Supprimer
     edit:
         title: Edition de la page "%title%"
     new:
