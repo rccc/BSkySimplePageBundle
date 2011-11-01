@@ -4,8 +4,9 @@ page:
             new: La page "%page_title%" a bien été ajouté
             edit: La page "%page_title%" a bien été mise à jours
             delete: La page "%page_title%" a bien été supprimé
-            group_delete: Les pages ont bien été supprimées
-            group_publish: Les pages ont bien été publiées
+            group:
+                delete: Les pages ont bien été supprimées
+                publish: Les pages ont bien été publiées
     form:
         label:
             title: Titre

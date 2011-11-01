@@ -17,3 +17,7 @@ bsky_simplepage_page_delete:
      defaults: { _controller:BSkySimplePageBundle:Page:delete }
      requirements:
       id: \d+
+      
+bsky_simplepage_page_groupprocess:
+     pattern:  /groupprocess
+     defaults: { _controller:BSkySimplePageBundle:Page:groupProcess }

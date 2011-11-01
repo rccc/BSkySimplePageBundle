@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
-class PageIndexGroupFormType extends AbstractType
+class PageGroupFormType extends AbstractType
 {
     public $translator;
     

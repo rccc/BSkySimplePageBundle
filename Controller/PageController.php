@@ -6,10 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BSky\Bundle\SimplePageBundle\Entity\Page;
 use BSky\Bundle\SimplePageBundle\Form\Type\PageFormType;
 use BSky\Bundle\SimplePageBundle\Form\Handler\PageFormHandler;
-
-use BSky\Bundle\SimplePageBundle\Form\Model\PageIndexGroup;
-use BSky\Bundle\SimplePageBundle\Form\Type\PageIndexGroupFormType;
-use BSky\Bundle\SimplePageBundle\Form\Handler\PageIndexGroupFormHandler;
+use BSky\Bundle\SimplePageBundle\Form\Model\PageGroup;
+use BSky\Bundle\SimplePageBundle\Form\Type\PageGroupFormType;
+use BSky\Bundle\SimplePageBundle\Form\Handler\PageGroupFormHandler;
 
 class PageController extends Controller
 {
@@ -24,29 +23,7 @@ class PageController extends Controller
             5
         );
         
-        $form_model = new PageIndexGroup();
-        $form = $this->createForm(new PageIndexGroupFormType($this->get('translator')), $form_model);
-        $formHandler = new PageIndexGroupFormHandler(
-            $this->get('request'),
-            $this->get('doctrine.orm.default_entity_manager')
-        );
-        
-        $process = $formHandler->process($form, $this->getRequest()->get('ids'));
-        if ($process != false) {
-            if ('delete' == $process) {
-                $this->get('session')->setFlash('success', $this->get('translator')->trans(
-                        'page.flash.success.group_delete', 
-                        array(), 
-                        'BSkySimplePageBundle')
-                );
-            } elseif ('publish' == $process) {
-                $this->get('session')->setFlash('success', $this->get('translator')->trans(
-                        'page.flash.success.group_publish', 
-                        array(), 
-                        'BSkySimplePageBundle')
-                );
-            }
-        }
+        $form = $this->createForm(new PageGroupFormType($this->get('translator')), new PageGroup());
         
         return $this->render('BSkySimplePageBundle:Page:index.html.twig', array(
             'paginator' => $paginator,
@@ -126,6 +103,35 @@ class PageController extends Controller
         
         $this->getDoctrine()->getEntityManager()->remove($entity);
         $this->getDoctrine()->getEntityManager()->flush();
+
+        return $this->redirect($this->generateUrl('bsky_simplepage_page_index'));
+    }
+    
+    public function groupProcessAction()
+    {
+        $model = new PageGroup();
+        $form = $this->createForm(new PageGroupFormType($this->get('translator')), $model);
+        $formHandler = new PageGroupFormHandler(
+            $this->get('request'),
+            $this->get('doctrine.orm.default_entity_manager')
+        );
+        
+        $process = $formHandler->process($form, $this->getRequest()->get('ids'));
+        if ($process != false) {
+            if ('delete' == $process) {
+                $this->get('session')->setFlash('success', $this->get('translator')->trans(
+                        'page.flash.success.group.delete', 
+                        array(), 
+                        'BSkySimplePageBundle')
+                );
+            } elseif ('publish' == $process) {
+                $this->get('session')->setFlash('success', $this->get('translator')->trans(
+                        'page.flash.success.group.publish', 
+                        array(), 
+                        'BSkySimplePageBundle')
+                );
+            }
+        }
 
         return $this->redirect($this->generateUrl('bsky_simplepage_page_index'));
     }

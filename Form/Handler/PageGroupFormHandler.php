@@ -5,7 +5,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 
-class PageIndexGroupFormHandler
+class PageGroupFormHandler
 {
     protected $request;
     protected $em;
