@@ -4,7 +4,7 @@
 
 {%- block content -%}
 <section>
-    <div class="page-header">
+    <div class="section-header">
         <h2>{{ 'page.new.title'|trans([], 'BSkySimplePageBundle') }}</h2>
     </div>
     <form class="form-default" action="{{ path('bsky_simplepage_page_new') }}" method="POST" {{ form_enctype(form) }} > 

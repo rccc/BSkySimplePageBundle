@@ -16,6 +16,7 @@ class PageGroup
         return array(
             'none',
             'publish',
+            'unpublish',
             'delete'
         );
     }

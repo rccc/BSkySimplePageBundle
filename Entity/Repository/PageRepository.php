@@ -42,4 +42,18 @@ class PageRepository extends EntityRepository
          
         $this->_em->flush();
     }
+    
+    public function unpublishGroup($ids) {
+        $qb = $this->createQueryBuilder('c');
+        
+        $late = new \DateTime('2016-01-01 00:00');
+        
+        $qb->update('BSkySimplePageBundle:Page', 'c')
+         ->set('c.published_at', $qb->expr()->literal($late->format('Y-m-d H:i:s')))
+         ->where($qb->expr()->in('c.id', $ids))
+         ->getQuery()
+         ->execute();
+         
+        $this->_em->flush();
+    }
 }

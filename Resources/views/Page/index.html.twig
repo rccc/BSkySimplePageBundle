@@ -2,23 +2,26 @@
 
 {%- block content -%}
 <section>
-    <div class="page-header">
+    <div class="section-header">
         <h2>{{ 'page.index.page_title'|trans([], 'BSkySimplePageBundle') }}</h2>
     </div>
-    <div class="well small">
-        <a class="btn small primary" href="{{ path('bsky_simplepage_page_new') }}">{{ 'page.index.add_page'|trans([], 'BSkySimplePageBundle') }}</a>
-    </div>
     <form method="POST" action="{{ path('bsky_simplepage_page_groupprocess') }}">
-        <div class="group-actions">
-            {{ form_widget(groupForm.action) }}
-            {{ form_rest(groupForm) }}
-            <input type="submit" value="{{ 'global.index_crud.group_action.submit'|trans([], 'BSkyCoreBundle') }}" />
+        <div class="table-actions">
+            <div class="other-actions">
+                <a class="btn" href="{{ path('bsky_simplepage_page_new') }}">{{ 'page.index.add_page'|trans([], 'BSkySimplePageBundle') }}</a>
+            </div>
+            <div class="group-actions">
+                {{ form_widget(groupForm.action) }}
+                {{ form_rest(groupForm) }}
+                <input class="btn" type="submit" value="{{ 'global.index_crud.group_action.submit'|trans([], 'BSkyCoreBundle') }}" />
+            </div>
         </div>
         <table class="zebra-striped">
             <thead>
                 <tr>
                     <th class="groupCheckbox"><input type="checkbox" /></th>
                     <th>{{ 'page.index.title'|trans([], 'BSkySimplePageBundle') }}</th>
+                    <th>{{ 'page.index.publish_status'|trans([], 'BSkySimplePageBundle') }}</th>
                     <th>{{ 'global.index_crud.actions'|trans([], 'BSkyCoreBundle') }}</th>
                 </tr>
             </thead>
@@ -26,10 +29,10 @@
                 {% for page in paginator %}
                 <tr>
                     <td class="groupCheckbox"><input type="checkbox" name="ids[]" value="{{ page.id }}" /></td>
-                    <td><a href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" title="{{ page.title }}">{{ page.title }}</td>
+                    <td><a href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" title="{{ page.title }}">{{ page.title }}</a></td>
+                    <td>{% if page.publishedAt|date('U') <= 'now'|date('U') %}{{ 'page.index.published'|trans([], 'BSkySimplePageBundle') }}{% else %}{{ 'page.index.notpublished'|trans([], 'BSkySimplePageBundle') }}{% endif %}</td>
                     <td class="items-actions">
                         <a class="bui btt-edit" href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" >{{ 'global.form_action.edit'|trans([], 'BSkyCoreBundle') }}</a>
-                        <a class="bui btt-delete bui-confirm-popover-left" data-popover-title="{{ 'global.form_action.are_you_sure'|trans([], 'BSkyCoreBundle') }}" href="{{ path('bsky_simplepage_page_delete', { 'id': page.id }) }}" >{{ 'global.form_action.delete'|trans([], 'BSkyCoreBundle') }}</a>
                     </td>
                 </tr>
                 {% else %}

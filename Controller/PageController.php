@@ -130,6 +130,12 @@ class PageController extends Controller
                         array(), 
                         'BSkySimplePageBundle')
                 );
+            } elseif ('unpublish' == $process) {
+                $this->get('session')->setFlash('success', $this->get('translator')->trans(
+                        'page.flash.success.group.unpublish', 
+                        array(), 
+                        'BSkySimplePageBundle')
+                );
             }
         }
 

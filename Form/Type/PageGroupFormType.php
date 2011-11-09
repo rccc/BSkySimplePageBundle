@@ -21,8 +21,9 @@ class PageGroupFormType extends AbstractType
         $builder->add('action', 'choice', array(
             'choices'   => array(
                 'none'   => '',
-                'publish' => $this->translator->trans('page.index.form_group.publish', array(), 'BSkySimplePageBundle'),
-                'delete' => $this->translator->trans('page.index.form_group.delete', array(), 'BSkySimplePageBundle')
+                'delete' => $this->translator->trans('global.form_action.group.delete', array(), 'BSkyCoreBundle'),
+                'publish' => $this->translator->trans('global.form_action.group.publish', array(), 'BSkyCoreBundle'),
+                'unpublish' => $this->translator->trans('global.form_action.group.unpublish', array(), 'BSkyCoreBundle')
             ),
             'multiple'  => false,
             'attr' => array('class' => 'medium')

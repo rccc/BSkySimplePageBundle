@@ -7,6 +7,7 @@ page:
             group:
                 delete: Les pages ont bien été supprimées
                 publish: Les pages ont bien été publiées
+                unpublish: Les pages ont bien été dépubliées
     form:
         label:
             title: Titre
@@ -20,6 +21,9 @@ page:
         no_result: Aucunes pages n'a été trouvées
         page_title: Liste des pages
         title: Titre
+        publish_status: Status
+        published: Publié
+        notpublished: Non publié
         form_group:
             publish: Publier
             delete: Supprimer

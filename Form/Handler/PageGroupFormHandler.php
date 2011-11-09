@@ -41,6 +41,9 @@ class PageGroupFormHandler
                 } elseif ($data->action == 'publish') {
                     $repository->publishGroup($ids_filtered);
                     return 'publish';
+                } elseif ($data->action == 'unpublish') {
+                    $repository->unpublishGroup($ids_filtered);
+                    return 'publish';
                 }
             }
         }
