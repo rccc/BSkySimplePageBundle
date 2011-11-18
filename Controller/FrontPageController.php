@@ -12,7 +12,19 @@ class FrontPageController extends Controller
     public function showAction($slug)
     {
         $repository = $this->getDoctrine()->getRepository('BSkySimplePageBundle:Page');
-        $entity = $repository->findOneBy(array('slug' => $slug));
+        
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->getQuery();
+        
+        $query->setHint(
+            \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
+            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
+        );
+        
+        // @todo 404 if post doesn't exist
+        $entity = $query->getSingleResult();
         
         return $this->render('BSkySimplePageBundle:FrontPage:show.html.twig', array(
             'entity' => $entity
