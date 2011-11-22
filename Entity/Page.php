@@ -67,7 +67,7 @@ class Page
     protected $locale;
     
     /**
-     * @ORM\ManyToOne(targetEntity="FJF\Bundle\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="GR\Bundle\UserBundle\Entity\User")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     protected $author;
@@ -235,7 +235,7 @@ class Page
      *
      * @param BSky\Bundle\UserBundle\Entity\User $author
      */
-    public function setAuthor(\FJF\Bundle\UserBundle\Entity\User $author)
+    public function setAuthor(\GR\Bundle\UserBundle\Entity\User $author)
     {
         $this->author = $author;
     }
