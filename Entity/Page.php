@@ -65,12 +65,6 @@ class Page
      * this is not a mapped field of entity metadata, just a simple property
      */
     protected $locale;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="FJF\Bundle\UserBundle\Entity\User")
-     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
-     */
-    protected $author;
 
     /**
      * @var datetime $published_at
@@ -228,26 +222,6 @@ class Page
     public function getUpdatedAt()
     {
         return $this->updated_at;
-    }
-
-    /**
-     * Set author
-     *
-     * @param BSky\Bundle\UserBundle\Entity\User $author
-     */
-    public function setAuthor(\FJF\Bundle\UserBundle\Entity\User $author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * Get author
-     *
-     * @return BSky\Bundle\UserBundle\Entity\User 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**

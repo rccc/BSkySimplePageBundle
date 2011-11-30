@@ -36,7 +36,6 @@ class PageFormHandler
                 $entity = $form->getData();
                 $language = $this->language_manager->getCurrentLanguage();
                 $entity->setTranslatableLocale($language->getValue());
-                $entity->setAuthor($this->getUser());
                 $this->em->persist($entity);
                 $this->em->flush();
                 
