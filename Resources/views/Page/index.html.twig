@@ -26,13 +26,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for page in paginator %}
+                {% for entity in paginator %}
                 <tr>
-                    <td class="groupCheckbox"><input type="checkbox" name="ids[]" value="{{ page.id }}" /></td>
-                    <td><a href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" title="{{ page.title }}">{{ page.title }}</a></td>
-                    <td>{% if page.publishedAt|date('U') <= 'now'|date('U') %}{{ 'page.index.published'|trans([], 'BSkySimplePageBundle') }}{% else %}{{ 'page.index.notpublished'|trans([], 'BSkySimplePageBundle') }}{% endif %}</td>
+                    <td class="groupCheckbox"><input type="checkbox" name="ids[]" value="{{ entity.id }}" /></td>
+                    <td><a href="{{ path('bsky_simplepage_page_edit', { 'id': entity.id }) }}" title="{{ entity.title }}">{{ entity.title }}</a></td>
+                    <td>{% if entity.publishedAt|date('U') <= 'now'|date('U') %}{{ 'page.index.published'|trans([], 'BSkySimplePageBundle') }}{% else %}{{ 'page.index.notpublished'|trans([], 'BSkySimplePageBundle') }}{% endif %}</td>
                     <td class="items-actions">
-                        <a class="bui btt-edit" href="{{ path('bsky_simplepage_page_edit', { 'id': page.id }) }}" >{{ 'global.form_action.edit'|trans([], 'BSkyCoreBundle') }}</a>
+                        <a class="bui btt-edit" href="{{ path('bsky_simplepage_page_edit', { 'id': entity.id }) }}" >{{ 'global.form_action.edit'|trans([], 'BSkyCoreBundle') }}</a>
                     </td>
                 </tr>
                 {% else %}
