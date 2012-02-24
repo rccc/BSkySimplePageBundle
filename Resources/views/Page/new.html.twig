@@ -2,22 +2,22 @@
 
 {% form_theme form 'BSkyCoreBundle:Form:fields.html.twig' %}
 
-{%- block content -%}
+{% block content %}
 <section>
     <div class="section-header">
         <h2>{{ 'page.new.title'|trans([], 'BSkySimplePageBundle') }}</h2>
     </div>
-    <form class="form-default" action="{{ path('bsky_simplepage_page_new') }}" method="POST" {{ form_enctype(form) }} > 
+    <form class="form-horizontal" action="{{ path('bsky_simplepage_page_new') }}" method="POST" {{ form_enctype(form) }} > 
         {{ form_row(form.title, {'label': 'page.form.label.title'|trans([], 'BSkySimplePageBundle') }) }}
         {{ form_row(form.body, {'label': 'page.form.label.body'|trans([], 'BSkySimplePageBundle') }) }}
         {{ form_row(form.keywords, {'label': 'page.form.label.keywords'|trans([], 'BSkySimplePageBundle') }) }}
         {{ form_row(form.published_at, {'label': 'page.form.label.published_at'|trans([], 'BSkySimplePageBundle') }) }}
         {{ form_rest(form) }}
-        <div class="actions">
-            <input type="submit" class="btn primary" value="{{ 'global.form_action.save'|trans([], 'BSkyCoreBundle') }}" >&nbsp;
-            <input type="submit" class="btn primary" name="save_and_add" value="{{ 'global.form_action.save_and_add'|trans([], 'BSkyCoreBundle') }}">&nbsp;
+        <div class="form-actions">
+            <input type="submit" class="btn btn-primary" value="{{ 'global.form_action.save'|trans([], 'BSkyCoreBundle') }}" >&nbsp;
+            <input type="submit" class="btn btn-primary" name="save_and_add" value="{{ 'global.form_action.save_and_add'|trans([], 'BSkyCoreBundle') }}">&nbsp;
             <a class="btn" href="{{ path('bsky_simplepage_page_index') }}" >{{ 'global.form_action.back_to_list'|trans([], 'BSkyCoreBundle') }}</a>
         </div>
     </form>
 </section>
-{%- endblock -%}
+{% endblock %}
