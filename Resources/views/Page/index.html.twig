@@ -1,6 +1,6 @@
 {% extends 'BSkyCoreBundle::layout.html.twig' %}
 
-{%- block content -%}
+{% block content %}
 <section>
     <div class="section-header">
         <h2>{{ 'page.index.page_title'|trans([], 'BSkySimplePageBundle') }}</h2>
@@ -45,4 +45,4 @@
     </form>
     {{ paginator|paginate }}
 </section>
-{%- endblock -%}
+{% endblock %}

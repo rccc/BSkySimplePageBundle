@@ -2,7 +2,7 @@
 
 {% form_theme form 'BSkyCoreBundle:Form:fields.html.twig' %}
 
-{%- block content -%}
+{% block content %}
 <section>
     <div class="section-header">
         <h2>{{ 'page.edit.title'|trans({'%title%':entity.title}, 'BSkySimplePageBundle') }}</h2>
@@ -27,4 +27,4 @@
         </div>
     </form>
 </section>
-{%- endblock -%}
+{% endblock %}
