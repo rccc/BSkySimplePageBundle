@@ -10,10 +10,10 @@
     {{ bsky_content_language_selector(languages, lang, 'bsky_simplepage_page_edit', entity.id) }}
     <form class="form-horizontal" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id, 'lang': lang}) }}" method="POST" {{ form_enctype(form) }} >
         {{ form_row(form.title) }}
-        <div class="clearfix">
-            <label>{{'page.form.label.url'|trans([], 'BSkySimplePageBundle') }}</label>
-            <div class="input">
-                <span class="inline-text"><a target="_blank" href="{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}">{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}</a></span>
+        <div class="control-group">
+            <label class="control-label">{{'page.form.label.url'|trans([], 'BSkySimplePageBundle') }}</label>
+            <div class="controls">
+                <span class="input-xlarge uneditable-input"><a target="_blank" href="{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}">{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}</a></span>
             </div>
         </div>
         {{ form_row(form.body) }}
