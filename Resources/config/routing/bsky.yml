@@ -1,0 +1,3 @@
+bsky_simplepage:
+    resource: "@BSkySimplePageBundle/Resources/config/routing/page.yml"
+    prefix:   /intranet/simplepage/
