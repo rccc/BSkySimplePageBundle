@@ -10,7 +10,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table(name="simplepage")
  * @ORM\Entity(repositoryClass="BSky\Bundle\SimplePageBundle\Entity\Repository\PageRepository")
- * @Gedmo\TranslationEntity(class="BSky\Bundle\SimplePageBundle\Entity\Translation\PageTranslation")
  */
 class Page
 {
@@ -36,7 +35,6 @@ class Page
     /**
      * @var string $slug
      *
-     * @Gedmo\Translatable
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
@@ -45,7 +43,6 @@ class Page
     /**
      * @var string $body
      *
-     * @Gedmo\Translatable
      * @ORM\Column(name="body", type="text", nullable=true)
      */
     protected $body;
@@ -53,18 +50,10 @@ class Page
     /**
      * @var string $keywords
      *
-     * @Gedmo\Translatable
      * @ORM\Column(name="keywords", type="string", length=255, nullable=true)
      * @Assert\MaxLength(255)
      */
     protected $keywords;
-    
-    /**
-     * @Gedmo\Locale
-     * Used locale to override Translation listener`s locale
-     * this is not a mapped field of entity metadata, just a simple property
-     */
-    protected $locale;
 
     /**
      * @var datetime $published_at
@@ -242,10 +231,5 @@ class Page
     public function getPublishedAt()
     {
         return $this->published_at;
-    }
-    
-    public function setTranslatableLocale($locale)
-    {
-        $this->locale = $locale;
     }
 }

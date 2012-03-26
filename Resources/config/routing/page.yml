@@ -7,8 +7,8 @@ bsky_simplepage_page_new:
      defaults: { _controller:BSkySimplePageBundle:Page:new }
      
 bsky_simplepage_page_edit:
-     pattern:  /{id}/edit/{lang}
-     defaults: { _controller:BSkySimplePageBundle:Page:edit, lang:fr }
+     pattern:  /{id}/edit
+     defaults: { _controller:BSkySimplePageBundle:Page:edit }
      requirements:
       id: \d+
       

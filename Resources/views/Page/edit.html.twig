@@ -7,8 +7,7 @@
     <div class="section-header">
         <h2>{{ 'page.edit.title'|trans({'%title%':entity.title}, 'BSkySimplePageBundle') }}</h2>
     </div>
-    {{ bsky_content_language_selector(languages, lang, 'bsky_simplepage_page_edit', entity.id) }}
-    <form class="form-horizontal" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id, 'lang': lang}) }}" method="POST" {{ form_enctype(form) }} >
+    <form class="form-horizontal" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id}) }}" method="POST" {{ form_enctype(form) }} >
         {{ form_row(form.title) }}
         <div class="control-group">
             <label class="control-label">{{'page.form.label.url'|trans([], 'BSkySimplePageBundle') }}</label>

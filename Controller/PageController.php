@@ -38,8 +38,7 @@ class PageController extends Controller
         $formHandler = new PageFormHandler(
             $this->get('request'),
             $this->get('doctrine.orm.default_entity_manager'),
-            $this->get('security.context'),
-            $this->get('bsky_core.language_manager')
+            $this->get('security.context')
         );
         
         if($formHandler->processNew($form)) {
@@ -57,24 +56,18 @@ class PageController extends Controller
         return $this->render('BSkySimplePageBundle:Page:new.html.twig', array('form' => $form->createView()));
     }
     
-    public function editAction($id, $lang)
+    public function editAction($id)
     {
         $entity = $this->getDoctrine()->getRepository('BSkySimplePageBundle:Page')->findOneBy(array('id' => $id));
-        
-        // Languages
-        $languages = $this->get('bsky_core.language_manager')->findAllActiveLanguages();
-        $entity->setTranslatableLocale($lang);
-        $this->getDoctrine()->getEntityManager()->refresh($entity);
         
         $form = $this->createForm(new PageFormType(), $entity);
         $formHandler = new PageFormHandler(
             $this->get('request'),
             $this->get('doctrine.orm.default_entity_manager'),
-            $this->get('security.context'),
-            $this->get('bsky_core.language_manager')
+            $this->get('security.context')
         );
         
-        if($formHandler->processEdit($form, $lang)){
+        if($formHandler->processEdit($form)){
             $this->getDoctrine()->getEntityManager()->refresh($entity);
             $this->get('session')->setFlash('success', $this->get('translator')->trans(
                     'page.flash.success.edit', 
@@ -85,9 +78,7 @@ class PageController extends Controller
         
         return $this->render('BSkySimplePageBundle:Page:edit.html.twig', array(
             'form' => $form->createView(),
-            'entity' => $entity,
-            'lang' => $lang,
-            'languages' => $languages,
+            'entity' => $entity
         ));
     }
     
@@ -118,25 +109,11 @@ class PageController extends Controller
         
         $process = $formHandler->process($form, $this->getRequest()->get('ids'));
         if ($process != false) {
-            if ('delete' == $process) {
-                $this->get('session')->setFlash('success', $this->get('translator')->trans(
-                        'page.flash.success.group.delete', 
-                        array(), 
-                        'BSkySimplePageBundle')
-                );
-            } elseif ('publish' == $process) {
-                $this->get('session')->setFlash('success', $this->get('translator')->trans(
-                        'page.flash.success.group.publish', 
-                        array(), 
-                        'BSkySimplePageBundle')
-                );
-            } elseif ('unpublish' == $process) {
-                $this->get('session')->setFlash('success', $this->get('translator')->trans(
-                        'page.flash.success.group.unpublish', 
-                        array(), 
-                        'BSkySimplePageBundle')
-                );
-            }
+            $this->get('session')->setFlash('success', $this->get('translator')->trans(
+                'page.flash.success.group.' . $process, 
+                array(), 
+                'BSkySimplePageBundle')
+            );
         }
 
         return $this->redirect($this->generateUrl('bsky_simplepage_page_index'));

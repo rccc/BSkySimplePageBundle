@@ -18,11 +18,6 @@ class FrontPageController extends Controller
             ->setParameter('slug', $slug)
             ->getQuery();
         
-        $query->setHint(
-            \Doctrine\ORM\Query::HINT_CUSTOM_OUTPUT_WALKER,
-            'Gedmo\\Translatable\\Query\\TreeWalker\\TranslationWalker'
-        );
-        
         // @todo 404 if post doesn't exist
         $entity = $query->getSingleResult();
         
