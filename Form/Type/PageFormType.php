@@ -28,7 +28,56 @@ class PageFormType extends AbstractType
             ->add('fbTitleAuto')
             ->add('fbDescription')
             ->add('fbDescriptionAuto')
-            ->add('fbType')
+            ->add('fbType', 'choice', array(
+                'required' => false,
+                'preferred_choices' => array(
+                    'article', 
+                    'blog',
+                    'website',
+                    'author',
+                    'company'
+                ),
+                'choices' => array(
+                    'blog' => 'Blog',
+                    'website' => 'Site Internet',
+                    'article' => 'Article',
+                    'activity' => 'Activité',
+                    'sport' => 'Sport',
+                    'bar' => 'Bar',
+                    'company' => 'Entreprise',
+                    'cafe' => 'Café',
+                    'hotel' => 'Hotel',
+                    'restaurant' => 'Restaurant',
+                    'cause' => 'Cause',
+                    'sports_league' => 'Ligue sportive',
+                    'sports_team' => 'Equipe de sport',
+                    'band' => 'Band',
+                    'government' => 'Gouvernement',
+                    'non_profit' => 'Non profit',
+                    'school' => 'Ecole',
+                    'university' => 'Université',
+                    'actor' => 'Acteur',
+                    'athlete' => 'Athlète',
+                    'author' => 'Auteur',
+                    'director' => 'Directeur',
+                    'musician' => 'Musicien',
+                    'politician' => 'Politicien',
+                    'public_figure' => 'Personne publique',
+                    'city' => 'Ville',
+                    'country' => 'Pays',
+                    'landmark' => 'Landmark',
+                    'state_province' => 'Etat/Departement',
+                    'album' => 'Album',
+                    'book' => 'Livre',
+                    'drink' => 'Boisson',
+                    'food' => 'Nourriture',
+                    'game' => 'Jeux',
+                    'product' => 'Produit',
+                    'song' => 'Musique',
+                    'movie' => 'Vidéo/Film',
+                    'tv_show' => 'Show Télévisé',
+                )
+            ))
             ->add('fbImage')
             ->add('fbSiteName')
             ->add('fbAppId')
