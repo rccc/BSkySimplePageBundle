@@ -9,13 +9,38 @@ page:
                 publish: Les pages ont bien été publiées
                 unpublish: Les pages ont bien été dépubliées
     form:
+        group:
+            informations_general: Informations générales
+            reglage_advanced: Réglages avancés
+            seo: SEO
+            facebook_open_graph: Facebook Open Graph
         label:
             title: Titre
             body: Contenu
             keywords: Mots-clefs
             published_at: Publié le
             slug: Slug
+            slug_auto: Slug Automatique
+            priority: Priorité (1 à 10)
             url: URL
+            fb_title: Titre
+            fb_title_auto: Titre automatique
+            fb_description: Description
+            fb_description_auto: Description automatique
+            fb_type: Type
+            fb_image: Image
+            fb_site_name: Nom du site
+            fb_app_id: FB App ID
+            fb_admins: IDs des admins
+            fb_location_latitude: Lieux Latitude
+            fb_location_longitude: Lieux Longitude
+            fb_location_street_address: Lieux Adresse
+            fb_location_locality: Lieux Ville
+            fb_location_region: Lieux Région
+            fb_location_postal_code: Lieux Code postal
+            fb_location_country_name: Pays
+            fb_email: Email
+            fb_phone_number: Téléphone
     index:
         add_page: Ajouter une page
         no_result: Aucunes pages n'a été trouvées

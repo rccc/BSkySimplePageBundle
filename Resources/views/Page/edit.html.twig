@@ -7,17 +7,70 @@
     <div class="section-header">
         <h2>{{ 'page.edit.title'|trans({'%title%':entity.title}, 'BSkySimplePageBundle') }}</h2>
     </div>
-    <form class="form-horizontal" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id}) }}" method="POST" {{ form_enctype(form) }} >
-        {{ form_row(form.title) }}
-        <div class="control-group">
-            <label class="control-label">{{'page.form.label.url'|trans([], 'BSkySimplePageBundle') }}</label>
-            <div class="controls">
-                <span class="input-xlarge uneditable-input"><a target="_blank" href="{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}">{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}</a></span>
+    <form class="form-horizontal" novalidate="novalidate" action="{{ path('bsky_simplepage_page_edit', {'id' : entity.id}) }}" method="POST" {{ form_enctype(form) }} >
+        <div class="portion open">
+            <div class="portion-header">
+                <span class="portion-action-toggle">+</span>
+                <span class="portion-title">{{ 'page.form.group.informations_general'|trans([], 'BSkySimplePageBundle') }}</span>
+            </div>
+            <div class="portion-container">
+                {{ form_row(form.title, {'label': 'page.form.label.title'|trans([], 'BSkySimplePageBundle') }) }}
+                <div class="control-group">
+                    <label class="control-label">{{'page.form.label.url'|trans([], 'BSkySimplePageBundle') }}</label>
+                    <div class="controls">
+                        <span class="input-xlarge uneditable-input"><a target="_blank" href="{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}">{{ url('bsky_simplepage_frontpage_show', {'slug':entity.slug}) }}</a></span>
+                    </div>
+                </div>
+                {{ form_row(form.body, {'label': 'page.form.label.body'|trans([], 'BSkySimplePageBundle') }) }}
             </div>
         </div>
-        {{ form_row(form.body) }}
-        {{ form_row(form.keywords) }}
-        {{ form_row(form.published_at) }}
+        <div class="portion">
+            <div class="portion-header">
+                <span class="portion-action-toggle">+</span>
+                <span class="portion-title">{{ 'page.form.group.reglage_advanced'|trans([], 'BSkySimplePageBundle') }}</span>
+            </div>
+            <div class="portion-container">
+                {{ form_row(form.slug, {'label': 'page.form.label.slug'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.slugAuto, {'label': 'page.form.label.slug_auto'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.published_at, {'label': 'page.form.label.published_at'|trans([], 'BSkySimplePageBundle') }) }}
+            </div>
+        </div>
+        <div class="portion">
+            <div class="portion-header">
+                <span class="portion-action-toggle">+</span>
+                <span class="portion-title">{{ 'page.form.group.seo'|trans([], 'BSkySimplePageBundle') }}</span>
+            </div>
+            <div class="portion-container">
+                {{ form_row(form.keywords, {'label': 'page.form.label.keywords'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.priority, {'label': 'page.form.label.priority'|trans([], 'BSkySimplePageBundle') }) }}
+            </div>
+        </div>
+        <div class="portion">
+            <div class="portion-header">
+                <span class="portion-action-toggle">+</span>
+                <span class="portion-title">{{ 'page.form.group.facebook_open_graph'|trans([], 'BSkySimplePageBundle') }}</span>
+            </div>
+            <div class="portion-container">
+                {{ form_row(form.fbTitle, {'label': 'page.form.label.fb_title'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbTitleAuto, {'label': 'page.form.label.fb_title_auto'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbDescription, {'label': 'page.form.label.fb_description'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbDescriptionAuto, {'label': 'page.form.label.fb_description_auto'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbType, {'label': 'page.form.label.fb_type'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbImage, {'label': 'page.form.label.fb_image'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbSiteName, {'label': 'page.form.label.fb_site_name'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbAppId, {'label': 'page.form.label.fb_app_id'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbAdmins, {'label': 'page.form.label.fb_admins'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationLatitude, {'label': 'page.form.label.fb_location_latitude'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationLongitude, {'label': 'page.form.label.fb_location_longitude'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationStreetAddress, {'label': 'page.form.label.fb_location_street_address'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationLocality, {'label': 'page.form.label.fb_location_locality'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationRegion, {'label': 'page.form.label.fb_location_region'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationPostalCode, {'label': 'page.form.label.fb_location_postal_code'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbLocationCountryName, {'label': 'page.form.label.fb_location_country_name'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbEmail, {'label': 'page.form.label.fb_email'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.fbPhoneNumber, {'label': 'page.form.label.fb_phone_number'|trans([], 'BSkySimplePageBundle') }) }}
+            </div>
+        </div>
         {{ form_rest(form) }}
         <div class="form-actions">
             <input type="submit" class="btn btn-primary" value="{{ 'global.form_action.update'|trans([], 'BSkyCoreBundle') }}" >&nbsp;

@@ -11,9 +11,36 @@ class PageFormType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('body', 'richeditor')
-            ->add('keywords')
-            ->add('published_at');
+            ->add('body', 'richeditor', array(
+                'attr' => array(
+                    'required' => 0,
+                    'data-rich-editor-active' => true,
+                    'data-rich-editor-theme' => 'advanced'
+                )
+            ))
+            ->add('keywords', 'textarea')
+            ->add('priority')
+            ->add('published_at')
+            ->add('slug')
+            ->add('slugAuto')
+            ->add('fbTitle')
+            ->add('fbTitleAuto')
+            ->add('fbDescription')
+            ->add('fbDescriptionAuto')
+            ->add('fbType')
+            ->add('fbImage')
+            ->add('fbSiteName')
+            ->add('fbAppId')
+            ->add('fbAdmins')
+            ->add('fbLocationLatitude')
+            ->add('fbLocationLongitude')
+            ->add('fbLocationStreetAddress')
+            ->add('fbLocationLocality')
+            ->add('fbLocationRegion')
+            ->add('fbLocationPostalCode')
+            ->add('fbLocationCountryName')
+            ->add('fbEmail')
+            ->add('fbPhoneNumber');
     }
     
     public function getName()

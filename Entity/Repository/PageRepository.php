@@ -20,6 +20,22 @@ class PageRepository extends EntityRepository
         return $qb->getQuery();
     }
     
+    public function findBySlugAndSimilary($slug) {
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb->select('p.id, p.slug')
+            ->where('p.slug LIKE :slug')
+            ->setParameter('slug', $slug . '%');
+        
+        $pages = $qb->getQuery()->getArrayResult();
+        $result = array();
+        foreach ($pages as $page) {
+            $result[$page['id']] = $page['slug'];
+        }
+        
+        return $result;
+    }
+    
     public function deleteGroup($ids) {
         $qb = $this->createQueryBuilder('c');
         

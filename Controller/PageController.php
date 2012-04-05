@@ -68,12 +68,12 @@ class PageController extends Controller
         );
         
         if($formHandler->processEdit($form)){
-            $this->getDoctrine()->getEntityManager()->refresh($entity);
             $this->get('session')->setFlash('success', $this->get('translator')->trans(
                     'page.flash.success.edit', 
                     array('%page_title%' => $entity->getTitle()), 
                     'BSkySimplePageBundle')
             );
+            return $this->redirect($this->generateUrl('bsky_simplepage_page_edit', array('id' => $entity->getId())));
         }
         
         return $this->render('BSkySimplePageBundle:Page:edit.html.twig', array(
