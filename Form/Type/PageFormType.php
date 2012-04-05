@@ -18,8 +18,9 @@ class PageFormType extends AbstractType
                     'data-rich-editor-theme' => 'advanced'
                 )
             ))
-            ->add('keywords', 'textarea')
-            ->add('priority')
+            ->add('seoKeywords', 'textarea')
+            ->add('seoPriority')
+            ->add('seoDescription', 'textarea')
             ->add('published_at')
             ->add('slug')
             ->add('slugAuto')

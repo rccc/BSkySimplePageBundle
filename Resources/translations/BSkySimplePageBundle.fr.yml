@@ -17,11 +17,12 @@ page:
         label:
             title: Titre
             body: Contenu
-            keywords: Mots-clefs
             published_at: Publié le
             slug: Slug
             slug_auto: Slug Automatique
-            priority: Priorité (1 à 10)
+            seo_keywords: Mots-clefs
+            seo_priority: Priorité (1 à 10)
+            seo_description: Description
             url: URL
             fb_title: Titre
             fb_title_auto: Titre automatique

@@ -41,8 +41,9 @@
                 <span class="portion-title">{{ 'page.form.group.seo'|trans([], 'BSkySimplePageBundle') }}</span>
             </div>
             <div class="portion-container">
-                {{ form_row(form.keywords, {'label': 'page.form.label.keywords'|trans([], 'BSkySimplePageBundle') }) }}
-                {{ form_row(form.priority, {'label': 'page.form.label.priority'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.seoKeywords, {'label': 'page.form.label.seo_keywords'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.seoPriority, {'label': 'page.form.label.seo_priority'|trans([], 'BSkySimplePageBundle') }) }}
+                {{ form_row(form.seoDescription, {'label': 'page.form.label.seo_description'|trans([], 'BSkySimplePageBundle') }) }}
             </div>
         </div>
         <div class="portion">

@@ -56,19 +56,27 @@ class Page
     /**
      * @var string $keywords
      *
-     * @ORM\Column(name="keywords", type="string", length=255, nullable=true)
-     * @Assert\MaxLength(255)
+     * @ORM\Column(name="seo_keywords", type="text", nullable=true)
+     * @Assert\MaxLength(500)
      */
-    protected $keywords;
+    protected $seoKeywords;
     
     /**
-     * @var string $keywords
+     * @var string $seoDescription
      *
-     * @ORM\Column(name="priority", type="integer", nullable=true)
+     * @ORM\Column(name="seo_description", type="text", nullable=true)
+     * @Assert\MaxLength(800)
+     */
+    protected $seoDescription;
+    
+    /**
+     * @var string $seoPriority
+     *
+     * @ORM\Column(name="seo_priority", type="integer", nullable=true)
      * @Assert\Max(limit=10)
      * @Assert\Min(limit=1)
      */
-    protected $priority;
+    protected $seoPriority;
     
     /**
      * @var string $fbTitle
@@ -330,36 +338,36 @@ class Page
         return $this->body;
     }
 
-    /**
-     * Set keywords
-     *
-     * @param string $keywords
-     */
-    public function setKeywords($keywords)
+    public function getSeoKeywords()
     {
-        $this->keywords = $keywords;
+        return $this->seoKeywords;
     }
 
-    /**
-     * Get keywords
-     *
-     * @return string 
-     */
-    public function getKeywords()
+    public function setSeoKeywords($seoKeywords)
     {
-        return $this->keywords;
-    }
-    
-    public function getPriority()
-    {
-        return $this->priority;
+        $this->seoKeywords = $seoKeywords;
     }
 
-    public function setPriority($priority)
+    public function getSeoDescription()
     {
-        $this->priority = $priority;
+        return $this->seoDescription;
     }
-        
+
+    public function setSeoDescription($seoDescription)
+    {
+        $this->seoDescription = $seoDescription;
+    }
+
+    public function getSeoPriority()
+    {
+        return $this->seoPriority;
+    }
+
+    public function setSeoPriority($seoPriority)
+    {
+        $this->seoPriority = $seoPriority;
+    }
+            
     public function getFbTitle()
     {
         if ($this->getFbTitleAuto()) {
@@ -427,10 +435,10 @@ class Page
     public function getFbDescription()
     {
         if ($this->getFbDescriptionAuto()) {
-            if (strlen($this->getBody()) > 50) {
-                return substr($this->getBody(),0,50);
+            if (strlen($this->getSeoDescription()) > 50) {
+                return substr($this->getSeoDescription(),0,50);
             } else {
-                return $this->getBody();
+                return $this->getSeoDescription();
             }
         }
         
