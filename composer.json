@@ -1,0 +1,33 @@
+{
+    "name": "rccc/bvm-simplepage-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony RcccSimplePageBundle",
+    "keywords": ["simple page"],
+    "homepage": "https://github.com/rccc/BVMSimplePageBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aldo Battaglia",
+            "email": "aldo@bzoote.com"
+        },
+        {
+            "name": "Stanislas Chollet",
+            "email": "stan@bzoote.com"
+        },
+	{
+	    "name": "rccc",
+	    "email": "rccc@dev.null"
+	}
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.2",
+        "friendsofsymfony/jsrouting-bundle": "1.5.3"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": { "Rccc\\SimplePageBundle": "" }
+    },
+    "target-dir": "Rccc/SimpleBundle"
+}
