@@ -1,9 +1,9 @@
 <?php
 
-namespace BSky\Bundle\SimplePageBundle;
+namespace BVM\Bundle\SimplePageBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class BSkySimplePageBundle extends Bundle
+class BVMSimplePageBundle extends Bundle
 {   
 }
