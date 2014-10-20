@@ -1,6 +1,6 @@
 <?php
 
-namespace BSky\Bundle\SimplePageBundle\Entity\Repository;
+namespace Rccc\Bundle\SimplePageBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

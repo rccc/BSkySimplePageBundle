@@ -1,19 +1,19 @@
 <?php
 
-namespace BSky\Bundle\SimplePageBundle\Controller;
+namespace Rccc\Bundle\SimplePageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\NoResultException;
 
-use BSky\Bundle\SimplePageBundle\Entity\Page;
-use BSky\Bundle\SimplePageBundle\Form\Type\PageFormType;
-use BSky\Bundle\SimplePageBundle\Form\Handler\PageFormHandler;
+use Rccc\Bundle\SimplePageBundle\Entity\Page;
+use Rccc\Bundle\SimplePageBundle\Form\Type\PageFormType;
+use Rccc\Bundle\SimplePageBundle\Form\Handler\PageFormHandler;
 
 class FrontPageController extends Controller
 {
     public function showAction($slug)
     {
-        $repository = $this->getDoctrine()->getRepository('BSkySimplePageBundle:Page');
+        $repository = $this->getDoctrine()->getRepository('RcccSimplePageBundle:Page');
         
         $query = $repository->createQueryBuilder('p')
             ->where('p.slug = :slug')
@@ -27,7 +27,7 @@ class FrontPageController extends Controller
             throw $this->createNotFoundException();
         }
 
-        return $this->render('BSkySimplePageBundle:FrontPage:show.html.twig', array(
+        return $this->render('RcccSimplePageBundle:FrontPage:show.html.twig', array(
             'entity' => $entity
         ));
     }

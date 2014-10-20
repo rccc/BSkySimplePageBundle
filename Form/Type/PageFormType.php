@@ -1,6 +1,6 @@
 <?php
 
-namespace BSky\Bundle\SimplePageBundle\Form\Type;
+namespace Rccc\Bundle\SimplePageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
