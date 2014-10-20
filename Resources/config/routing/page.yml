@@ -1,23 +1,23 @@
-bsky_simplepage_page_index:
+bvm_simplepage_page_index:
      pattern:  /
-     defaults: { _controller:BSkySimplePageBundle:Page:index }
+     defaults: { _controller:BVMSimplePageBundle:Page:index }
      
-bsky_simplepage_page_new:
+bvm_simplepage_page_new:
      pattern:  /new
-     defaults: { _controller:BSkySimplePageBundle:Page:new }
+     defaults: { _controller:BVMySimplePageBundle:Page:new }
      
-bsky_simplepage_page_edit:
+bvm_simplepage_page_edit:
      pattern:  /{id}/edit
-     defaults: { _controller:BSkySimplePageBundle:Page:edit }
+     defaults: { _controller:BVMySimplePageBundle:Page:edit }
      requirements:
       id: \d+
       
-bsky_simplepage_page_delete:
+bvm_simplepage_page_delete:
      pattern:  /{id}/delete
-     defaults: { _controller:BSkySimplePageBundle:Page:delete }
+     defaults: { _controller:BVMySimplePageBundle:Page:delete }
      requirements:
       id: \d+
       
-bsky_simplepage_page_groupprocess:
+bvm_simplepage_page_groupprocess:
      pattern:  /groupprocess
-     defaults: { _controller:BSkySimplePageBundle:Page:groupProcess }
+     defaults: { _controller:BVMySimplePageBundle:Page:groupProcess }

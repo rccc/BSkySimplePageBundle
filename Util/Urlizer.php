@@ -1,6 +1,6 @@
 <?php
 
-namespace BSky\Bundle\SimplePageBundle\Util;
+namespace BVM\Bundle\SimplePageBundle\Util;
 
 class Urlizer
 {
